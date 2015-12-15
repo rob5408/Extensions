@@ -1,14 +1,14 @@
 //
 //  NSNotificationExtensions.swift
-//  Inspirus
+//  Extensions
 //
 //  Created by Robert Johnson on 6/1/15.
-//  Copyright (c) 2015 Inspirus. All rights reserved.
+//  Copyright (c) 2015 Unled, LLC. All rights reserved.
 //
 
 extension NSNotification {
 
-    func keyboardAnimationDuration() -> NSTimeInterval {
+    public func keyboardAnimationDuration() -> NSTimeInterval {
         if let info = self.userInfo {
             return info[UIKeyboardAnimationDurationUserInfoKey] as? NSTimeInterval ?? 0.0
         } else {
@@ -16,7 +16,7 @@ extension NSNotification {
         }
     }
 
-    func keyboardFrameEnd() -> CGRect {
+    public func keyboardFrameEnd() -> CGRect {
         if let info = self.userInfo, value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             return value.CGRectValue()
         } else {

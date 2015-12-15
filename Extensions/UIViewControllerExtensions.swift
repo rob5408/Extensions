@@ -1,16 +1,16 @@
 //
 //  UIViewControllerExtensions.swift
-//  Elemental
+//  Extensions
 //
 //  Created by Robert Johnson on 11/2/15.
-//  Copyright © 2015 Elemental. All rights reserved.
+//  Copyright (c) 2015 Unled, LLC. All rights reserved.
 //
 
 import UIKit
 
 extension UIViewController {
     
-    func presentViewControllerNow(viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
+    public func presentViewControllerNow(viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
         self.presentViewController(
             viewControllerToPresent,
             animated: flag,
@@ -38,7 +38,7 @@ extension UIViewController {
 //    self.actionMenuViewController?.presentViewController(alertController, animated: true) {
 //    }
 
-    func alert(title: String?, _ message: String?, _ okAlertAction: UIAlertAction?) -> UIAlertController {
+    public func alert(title: String?, _ message: String?, _ okAlertAction: UIAlertAction?) -> UIAlertController {
         
         let alertController = UIAlertController(
             title: title ?? "",
@@ -74,7 +74,7 @@ extension UIViewController {
 //        )
     }
     
-    func alert(title: String?, _ message: String?) -> UIAlertController {
+    public func alert(title: String?, _ message: String?) -> UIAlertController {
         return self.alert(title, message, nil)
     }
     

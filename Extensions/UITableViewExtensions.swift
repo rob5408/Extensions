@@ -1,16 +1,16 @@
 //
 //  UITableViewExtensions.swift
-//  Inspirus
+//  Extensions
 //
 //  Created by Robert Johnson on 5/22/15.
-//  Copyright (c) 2015 Inspirus. All rights reserved.
+//  Copyright (c) 2015 Unled, LLC. All rights reserved.
 //
 
 import UIKit
 
 extension UITableView {
     
-    func standardTheme(topOverscrollColor topColor: UIColor? = nil, bottomOverscrollColor bottomColor: UIColor? = nil) {
+    public func standardTheme(topOverscrollColor topColor: UIColor? = nil, bottomOverscrollColor bottomColor: UIColor? = nil) {
 
         // Top overflow
         // http://stackoverflow.com/a/20236562
