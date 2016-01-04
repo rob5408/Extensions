@@ -74,6 +74,12 @@ extension UIViewController {
 //        )
     }
     
+    func applyConstraintsImmediately() {
+        // http://stackoverflow.com/a/13542580
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+    }
+
     public func alert(title: String?, _ message: String?) -> UIAlertController {
         return self.alert(title, message, nil)
     }
