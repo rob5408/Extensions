@@ -74,7 +74,7 @@ extension UIViewController {
 //        )
     }
     
-    func applyConstraintsImmediately() {
+    public func applyConstraintsImmediately() {
         // http://stackoverflow.com/a/13542580
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
