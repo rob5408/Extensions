@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Extensions"
-  s.version      = "1.1.0"
+  s.version      = "1.2.0"
   s.summary      = "Extensions is a collection of common UIKit tweaks"
 
   s.description  = <<-DESC
@@ -73,7 +73,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/rob5408/Extensions.git", :tag => "1.1.0" }
+  s.source       = { :git => "https://github.com/rob5408/Extensions.git", :tag => "1.2.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
