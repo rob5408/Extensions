@@ -13,7 +13,7 @@ extension UITableView {
     public func standardTheme(topOverscrollColor topColor: UIColor? = nil, bottomOverscrollColor bottomColor: UIColor? = nil) {
 
         // Top overflow
-        // http://stackoverflow.com/a/20236562 - based on this
+        // http://stackoverflow.com/a/20236562
         if let topColor = topColor {
             var frame = self.bounds ?? CGRectZero
             frame.origin.y = -(frame.size.height ?? 0.0)
