@@ -14,18 +14,19 @@ extension UITableView {
 
         // Top overflow
         // http://stackoverflow.com/a/20236562
-        if (topColor != nil) {
+        if let topColor = topColor {
             var frame = self.bounds ?? CGRectZero
             frame.origin.y = -(frame.size.height ?? 0.0)
             
             let backgroundView = UIView(frame: frame)
-            backgroundView.backgroundColor = topColor!
+            backgroundView.autoresizingMask = UIViewAutoresizing.FlexibleWidth
+            backgroundView.backgroundColor = topColor
             self.insertSubview(backgroundView, atIndex: 0)
         }
         
         // Bottom overflow
-        if (bottomColor != nil) {
-            self.backgroundColor = bottomColor!
+        if let bottomColor = bottomColor {
+            self.backgroundColor = bottomColor
         }
 
         // Remove filler cells
