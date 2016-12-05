@@ -1,14 +1,10 @@
-//
-//  UIViewControllerExtensions.swift
-//  Extensions
-//
-//  Created by Robert Johnson on 11/2/15.
-//  Copyright (c) 2015 Unled, LLC. All rights reserved.
-//
-
 import UIKit
 
 extension UIViewController {
+    
+    public func simpleBackButton() {
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+    }
     
     public func presentViewControllerNow(viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
         self.presentViewController(
@@ -38,11 +34,19 @@ extension UIViewController {
 //    self.actionMenuViewController?.presentViewController(alertController, animated: true) {
 //    }
 
-    public func alert(title: String?, _ message: String?, _ okAlertAction: UIAlertAction?) -> UIAlertController {
+    public func applyConstraintsImmediately() {
+        // http://stackoverflow.com/a/13542580
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+    }
+
+    public func alert(title title: String? = nil, message message: String? = nil, ok okAlertAction: UIAlertAction? = nil) -> UIAlertController {
+        
+        let useTitle = title ?? NSBundle.mainBundle().infoDictionary?[kCFBundleNameKey as String] as? String ?? ""
         
         let alertController = UIAlertController(
-            title: title ?? "",
-            message: message ?? "",
+            title: useTitle,
+            message: message,
             preferredStyle: .Alert)
         
         if let okAlertAction = okAlertAction {
@@ -62,42 +66,49 @@ extension UIViewController {
             completion: nil)
         
         return alertController
-        
-//        return UIAlertController.showAlertInViewController(
-//            self,
-//            withTitle: title ?? "",
-//            message: message ?? "",
-//            cancelButtonTitle: NSLocalizedString("Ok", comment: ""),
-//            destructiveButtonTitle: nil,
-//            otherButtonTitles: nil,
-//            tapBlock: block
-//        )
     }
     
-    public func applyConstraintsImmediately() {
-        // http://stackoverflow.com/a/13542580
-        self.view.setNeedsLayout()
-        self.view.layoutIfNeeded()
+    public func alertWithError(error: NSError?) {
+        self.alert(message: error?.localizedDescription)
     }
 
-    public func alert(title: String?, _ message: String?) -> UIAlertController {
-        return self.alert(title, message, nil)
+    public func confirm(title title: String? = nil, message message: String = "", ifOk okAlertAction: UIAlertAction? = nil, ifCancel cancelAlertAction: UIAlertAction? = nil) -> UIAlertController {
+        
+        let useTitle = title ?? NSBundle.mainBundle().infoDictionary?[kCFBundleNameKey as String] as? String ?? ""
+        
+        let alertController = UIAlertController(
+            title: useTitle,
+            message: message,
+            preferredStyle: .Alert)
+        
+        if let okAlertAction = okAlertAction {
+            alertController.addAction(okAlertAction)
+        } else {
+            let okAlertAction = UIAlertAction(
+                title: NSLocalizedString("Ok", comment: ""),
+                style: .Default,
+                handler: nil)
+            
+            alertController.addAction(okAlertAction)
+        }
+
+        if let cancelAlertAction = cancelAlertAction {
+            alertController.addAction(cancelAlertAction)
+        } else {
+            let cancelAlertAction = UIAlertAction(
+                title: NSLocalizedString("Cancel", comment: ""),
+                style: .Default,
+                handler: nil)
+            
+            alertController.addAction(cancelAlertAction)
+        }
+
+        self.presentViewControllerNow(
+            alertController,
+            animated: true,
+            completion: nil)
+        
+        return alertController
     }
-    
-//    func confirm(title: String?, _ message: String?, _ yesNo: (yes: String, no: String)?, _ yesBlock: UIAlertControllerCompletionBlock?) -> UIAlertController {
-//        return UIAlertController.showAlertInViewController(
-//            self,
-//            withTitle: title ?? "",
-//            message: message ?? "",
-//            cancelButtonTitle: yesNo?.no ?? NSLocalizedString("No", comment: ""),
-//            destructiveButtonTitle: nil,
-//            otherButtonTitles: [yesNo?.yes ?? NSLocalizedString("Yes", comment: "")],
-//            tapBlock: { (alertController: UIAlertController, alertAction: UIAlertAction, buttonIndex: Int) -> Void in
-//                if (buttonIndex == alertController.firstOtherButtonIndex) {
-//                    yesBlock?(alertController, alertAction, buttonIndex)
-//                }
-//            }
-//        )
-//    }
 
 }
