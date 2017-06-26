@@ -8,19 +8,19 @@
 
 extension NSNotification {
 
-    public func keyboardAnimationDuration() -> NSTimeInterval {
+    public func keyboardAnimationDuration() -> TimeInterval {
         if let info = self.userInfo {
-            return info[UIKeyboardAnimationDurationUserInfoKey] as? NSTimeInterval ?? 0.0
+            return info[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval ?? 0.0
         } else {
             return 0.0
         }
     }
 
     public func keyboardFrameEnd() -> CGRect {
-        if let info = self.userInfo, value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            return value.CGRectValue()
+        if let info = self.userInfo, let value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            return value.cgRectValue
         } else {
-            return CGRectZero
+            return CGRect.zero
         }
     }
 
