@@ -68,7 +68,7 @@ extension UIViewController {
         return alertController
     }
     
-    public func alertWithError(error: NSError?) {
+    public func alertWithError(error: Error?) {
         self.alert(message: error?.localizedDescription)
     }
 
