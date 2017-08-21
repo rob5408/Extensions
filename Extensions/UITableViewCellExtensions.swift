@@ -1,11 +1,3 @@
-//
-//  UITableViewCellExtensions.swift
-//  Extensions
-//
-//  Created by Robert Johnson on 7/22/15.
-//  Copyright (c) 2015 Unled, LLC. All rights reserved.
-//
-
 import UIKit
 
 extension UITableViewCell {

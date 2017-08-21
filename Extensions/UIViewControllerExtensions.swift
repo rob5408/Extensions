@@ -3,11 +3,11 @@ import UIKit
 extension UIViewController {
     
     public func simpleBackButton() {
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     public func presentViewControllerNow(viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
-        self.presentViewController(
+        self.present(
             viewControllerToPresent,
             animated: flag,
             completion: completion)
@@ -42,51 +42,51 @@ extension UIViewController {
 
     public func alert(title title: String? = nil, message message: String? = nil, ok okAlertAction: UIAlertAction? = nil) -> UIAlertController {
         
-        let useTitle = title ?? NSBundle.mainBundle().infoDictionary?[kCFBundleNameKey as String] as? String ?? ""
+        let useTitle = title ?? Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String ?? ""
         
         let alertController = UIAlertController(
             title: useTitle,
             message: message,
-            preferredStyle: .Alert)
+            preferredStyle: .alert)
         
         if let okAlertAction = okAlertAction {
             alertController.addAction(okAlertAction)
         } else {
             let okAlertAction = UIAlertAction(
                 title: NSLocalizedString("Ok", comment: ""),
-                style: .Default,
+                style: .default,
                 handler: nil)
             
             alertController.addAction(okAlertAction)
         }
         
         self.presentViewControllerNow(
-            alertController,
+            viewControllerToPresent: alertController,
             animated: true,
             completion: nil)
         
         return alertController
     }
     
-    public func alertWithError(error: NSError?) {
+    public func alertWithError(error: Error?) {
         self.alert(message: error?.localizedDescription)
     }
 
     public func confirm(title title: String? = nil, message message: String = "", ifOk okAlertAction: UIAlertAction? = nil, ifCancel cancelAlertAction: UIAlertAction? = nil) -> UIAlertController {
         
-        let useTitle = title ?? NSBundle.mainBundle().infoDictionary?[kCFBundleNameKey as String] as? String ?? ""
+        let useTitle = title ?? Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String ?? ""
         
         let alertController = UIAlertController(
             title: useTitle,
             message: message,
-            preferredStyle: .Alert)
+            preferredStyle: .alert)
         
         if let okAlertAction = okAlertAction {
             alertController.addAction(okAlertAction)
         } else {
             let okAlertAction = UIAlertAction(
                 title: NSLocalizedString("Ok", comment: ""),
-                style: .Default,
+                style: .default,
                 handler: nil)
             
             alertController.addAction(okAlertAction)
@@ -97,14 +97,14 @@ extension UIViewController {
         } else {
             let cancelAlertAction = UIAlertAction(
                 title: NSLocalizedString("Cancel", comment: ""),
-                style: .Default,
+                style: .default,
                 handler: nil)
             
             alertController.addAction(cancelAlertAction)
         }
 
         self.presentViewControllerNow(
-            alertController,
+            viewControllerToPresent: alertController,
             animated: true,
             completion: nil)
         
